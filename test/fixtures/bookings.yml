@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_name: MyString
+  airline_name: MyString
+  travel_date: 2017-01-09
+  booking_date: 2017-01-09
+  user_id: 1
+  cancled: false
+  valid_ticket: false
+  class_type: MyString
+
+two:
+  user_name: MyString
+  airline_name: MyString
+  travel_date: 2017-01-09
+  booking_date: 2017-01-09
+  user_id: 1
+  cancled: false
+  valid_ticket: false
+  class_type: MyString

@@ -1,0 +1,84 @@
+
+
+<div class="page-header">
+  <h2>My Bookings</h2>
+</div>
+
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#business" aria-controls="business" role="tab" data-toggle="tab">Business Class</a></li>
+    <li role="presentation"><a href="#economy" aria-controls="economy" role="tab" data-toggle="tab"><b>Economy Class</b></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane" id="business">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Airline</th>
+            <th>Travel Date</th>
+            <th>Booking Number</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @bookings.where('class_type = ?', "business").each do |booking| %>
+            <tr>
+              <td><%= booking.user_name.capitalize %></td>
+              <td><%= booking.airline_name.capitalize %></td>
+              <td><%= booking.travel_date %></td>
+              <td><%= booking.booking_number %></td>
+              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>
+              <% if booking.travel_date > Date.today %>
+                <td><%= link_to "Cancel Booking", bookings_cancel_booking_path(booking_id: booking.id), data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>        
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="economy">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Airline</th>
+            <th>Travel Date</th>
+            <th>Booking Number</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @bookings.where('class_type = ?', "economy").each do |booking| %>
+            <tr>
+              <td><%= booking.user_name.capitalize %></td>
+              <td><%= booking.airline_name.capitalize %></td>
+              <td><%= booking.travel_date %></td>
+              <td><%= booking.booking_number %></td>
+              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>
+              <% if booking.travel_date > Date.today %>
+                <td><%= link_to "Cancel Booking", bookings_cancel_booking_path(booking_id: booking.id), data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
+              <% else %>
+                <td></td>
+              <% end %>        
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+

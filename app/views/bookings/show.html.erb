@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-6 text-left">
+    <p>
+      <h2>Name : <%= @booking.user_name.upcase %></h2>
+    </p>
+  
+    <p>
+      <h2>Airline : <%= @booking.airline_name.upcase %></h2>
+      
+    </p>
+
+    <p>
+      <h2>Booking Date : <%= @booking.booking_date %></h2>
+      
+    </p>
+    <p>
+      <h2>Travel Date : <%= @booking.travel_date %></h2>
+    </p>
+    <p>
+      <h2>Class : <%= @booking.class_type.capitalize %> Class</h2>
+    </p>
+    <p>
+      <h2>Booking Number : <%= @booking.booking_number %></h2>      
+    </p>
+    <% if !@booking.foods.empty? %>
+      <p>
+        <h2>Foods Selected :<h2> 
+        <ul>
+          <% @booking.foods.each do |food| %>
+            <li><h3><%= food.name.capitalize %><h3></li>
+          <% end %>
+        </ul>
+      </p>
+    <% end %>
+    <% if @booking.travel_date > Date.today %>
+      <%= link_to "Cancel Booking", bookings_cancel_booking_path(booking_id: @booking.id), data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <%= link_to "Edit Food", edit_booking_path(@booking), class: "btn btn-info" %>
+    <% end %><br/><br/>
+
+    <%= link_to "Back", :back, class: "btn btn-primary pull-center" %>
+  </div>
+</div>
+

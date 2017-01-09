@@ -1,0 +1,2 @@
+json.extract! booking, :id, :user_name, :airline_name, :travel_date, :booking_date, :user_id, :cancled, :valid_ticket, :class_type, :created_at, :updated_at
+json.url booking_url(booking, format: :json)

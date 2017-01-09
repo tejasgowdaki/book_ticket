@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="col-md-6">
+    <%= form_for(@booking) do |f| %>
+      <% if @booking.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+          <ul>
+          <% @booking.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.label :user_name %><br>
+        <%= f.text_field :user_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :airline_name %><br>
+        <%= f.text_field :airline_name, class: "form-control" %>
+      </div>
+      <div class="field">
+        <%= f.label :travel_date %><br>
+        <%= f.date_select :travel_date, start_date: Date.today %>
+      </div><br/>
+      <div class="form-group">
+        <%= f.label :Class %><br/>
+        <label class="radio-inline">
+          <%= f.radio_button :class_type, "business" %>Business
+        </label>
+        <label class="radio-inline">
+          <%= f.radio_button :class_type, "economy" %>Economy
+        </label>     
+      </div>
+<!--      <div class="form-group">
+        <%= f.label :select_meal %><br/>
+        <%= f.collection_select :food_ids, Food.all, :id, :name, {}, {multiple: true, class: 'chosen-select'} %>
+      </div>-->
+      
+      <%= f.hidden_field :booking_date, value: Date.today %>
+      
+      <div class="actions">
+        <%= f.submit "Create", class: "btn btn-primary" %> or <%= link_to "Back", :back %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".chosen-select").chosen({max_selected_options: 3});
+  jQuery(document).ready(function(){
+  jQuery(".chosen").chosen();
+});
+</script>
