@@ -5,7 +5,7 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   def index
-    @bookings = current_user.bookings.where('cancled == ?', false)
+    @bookings = current_user.bookings.where('cancled = ?', false)
   end
 
   # GET /bookings/1
