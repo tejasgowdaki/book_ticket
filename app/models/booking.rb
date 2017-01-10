@@ -14,7 +14,7 @@ class Booking < ActiveRecord::Base
 
 	def mark_old_and_cancelled_bookings_as_invalid
 		Booking.where('travel_date < ?', Date.today - 2.years).pluck(:valid_ticket).map { |v| v = false }
-		Booking.where('cancled == ? and travel_date < ?', true, Date.today - 3.months ).pluck(:valid_ticket).map { |v| v = false }
+		Booking.where('cancled = ? and travel_date < ?', true, Date.today - 3.months ).pluck(:valid_ticket).map { |v| v = false }
 	end
 
 
