@@ -1,0 +1,10 @@
+<%= form_for @food do |f| %>
+
+	<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+
+	<%= f.submit "Create", class: "btn btn-success" %> or <%= link_to "Go Back", :back %>
+
+<% end %>
