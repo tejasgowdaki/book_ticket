@@ -4,6 +4,12 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'chosen-rails'
+gem 'rails-assets-sweetalert2', source: 'https://rails-assets.org'
+gem 'sweet-alert-confirm'
+
+gem 'httparty'
+gem 'rabl'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

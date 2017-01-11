@@ -21,19 +21,27 @@ class Booking < ActiveRecord::Base
 
 	def self.generate_booking_number		
 		user_defined_numbers = ["SELFIE", "BARNEY", "RACHEL", "MONICA", "ETIHAD", "AMAZON"]
-		book_number = generate_number
+		
 		while true
-			if user_defined_numbers.find {|a| a == book_number}
-				book_number = generate_number
-			elsif Booking.all.where('valid_ticket = ?', true).pluck(:booking_number).find {|a| a == book_number}
-				book_number = generate_number
-			else					
-				break
+			response = HTTParty.get('https://book-num-api.herokuapp.com/api/v1/bookings/number')
+			book_number = response["booking_number"]
+
+			if !(user_defined_numbers.find {|a| a == book_number})
+				if !(Booking.all.where('valid_ticket = ?', true).pluck(:booking_number).find {|a| a == book_number})
+					if !(Booking.last.nil?)
+						if !(Booking.last.booking_number.include? book_number[0..2])
+							break
+						end
+					else
+						break
+					end
+				end			
 			end
+			
 		end
 		return book_number
 	end
-
+=begin
 	def self.generate_number
 		first_three = Array.new(3){rand(10..35).to_s(36)}.join.upcase
 		while true
@@ -50,5 +58,5 @@ class Booking < ActiveRecord::Base
 		last_three = Array.new(3){rand(36).to_s(36)}.join.upcase
 		return first_three + last_three
 	end
-	
+=end
 end
