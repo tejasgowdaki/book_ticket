@@ -23,7 +23,6 @@
             <th>Travel Date</th>
             <th>Booking Number</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -34,12 +33,7 @@
               <td><%= booking.airline_name.capitalize %></td>
               <td><%= booking.travel_date %></td>
               <td><%= booking.booking_number %></td>
-              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>
-              <% if booking.travel_date > Date.today %>
-                <td><%= link_to "Cancel Booking", bookings_cancel_booking_path(booking_id: booking.id), data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
-              <% else %>
-                <td></td>
-              <% end %>        
+              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>   
             </tr>
           <% end %>
         </tbody>
@@ -55,7 +49,6 @@
             <th>Travel Date</th>
             <th>Booking Number</th>
             <th></th>
-            <th></th>
           </tr>
         </thead>
 
@@ -66,12 +59,7 @@
               <td><%= booking.airline_name.capitalize %></td>
               <td><%= booking.travel_date %></td>
               <td><%= booking.booking_number %></td>
-              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>
-              <% if booking.travel_date > Date.today %>
-                <td><%= link_to "Cancel Booking", bookings_cancel_booking_path(booking_id: booking.id), data: {confirm: "Are you sure?"}, class: "btn btn-danger" %></td>
-              <% else %>
-                <td></td>
-              <% end %>        
+              <td><%= link_to 'Booking Details', booking, class: "btn btn-primary" %></td>      
             </tr>
           <% end %>
         </tbody>

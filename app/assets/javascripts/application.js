@@ -10,10 +10,10 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require sweetalert2
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
 //= require chosen-jquery
-//= require sweet-alert-confirm
+//= require sweetalert2
+//= require sweet-alert2-rails
